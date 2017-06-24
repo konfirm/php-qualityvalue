@@ -1,12 +1,12 @@
 language: php
 
 php:
-  '7.0'
-  '7.1'
-  nightly
+- '7.0'
+- '7.1'
+- nightly
 
 install:
-  composer install
+- composer install
 
 notifications:
   slack:
