@@ -20,6 +20,26 @@ class Collection implements \Iterator, \JsonSerializable {
 	}
 
 	/**
+	 * @param \Closure $callback
+	 * @return Collection
+	 */
+	public function filter(\Closure $callback) {
+		return new Collection(...array_filter($this->tokens, $callback));
+	}
+
+	/**
+	 * @param $value
+	 * @return TokenInterface|mixed
+	 */
+	public function findTokenByValue($value) {
+		$filtered = $this->filter(function(TokenInterface $token) use ($value) {
+			return $token->getValue() === $value;
+		});
+
+		return $filtered->rewind();
+	}
+
+	/**
 	 * @param $quality
 	 * @return Collection
 	 */

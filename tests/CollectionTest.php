@@ -1,6 +1,8 @@
 <?php
 
 use Konfirm\QualityValue\Collection;
+use Konfirm\QualityValue\Token;
+use Konfirm\QualityValue\TokenInterface;
 
 /**
  *  Test Collection class
@@ -72,5 +74,49 @@ class CollectionTest extends PHPUnit\Framework\TestCase {
 		unset($expect);
 		unset($cursor);
 		unset($collection);
+	}
+
+	public function testFindTokenByValue() {
+		$collection = Collection::fromString('a,b,c;q=0.8,d;q=0,e;q=0.90');
+		$token = $collection->findTokenByValue('a');
+
+		$this->assertInstanceOf(Token::class, $token);
+		$this->assertEquals('a', $token->getValue());
+		$this->assertEquals(1, $token->getWeight());
+
+		unset($collection);
+		unset($token);
+	}
+
+	public function testFilter() {
+		$collection = Collection::fromString('a,b,c;q=0.8,d;q=0,e;q=0.90');
+		$filtered = $collection->filter(function(TokenInterface $token) {
+			return $token->getWeight() >= 1;
+		});
+
+		$token = $filtered->rewind();
+		$this->assertEquals('a', $token->getValue());
+		$this->assertEquals(1, $token->getWeight());
+		$this->assertEquals('a', (string) $token);
+
+		$token = $filtered->next();
+		$this->assertEquals('b', $token->getValue());
+		$this->assertEquals(1, $token->getWeight());
+		$this->assertEquals('b', (string) $token);
+
+		$token = $filtered->next();
+		$this->assertEquals(null, $token);
+
+		$this->assertEquals('a,b', (string) $filtered);
+		$this->assertJsonStringEqualsJsonString(
+			json_encode([
+				['value' => 'a', 'weight' => 1, 'display' => 'a'],
+				['value' => 'b', 'weight' => 1, 'display' => 'b'],
+			]),
+			json_encode($filtered)
+		);
+
+		unset($collection);
+		unset($filtered);
 	}
 }
