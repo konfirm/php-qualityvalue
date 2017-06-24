@@ -1,13 +1,12 @@
 language: php
-
 php:
-  - '7.0'
-  - '7.1'
-  - 'nightly'
-
+- '7.0'
+- '7.1'
+- nightly
 install:
-  - composer self-update
-  - composer install --dev
-
+- composer self-update
+- composer install --dev
 script: phpunit
-
+notifications:
+  slack:
+    secure: aghOFjxz2dxPcUaycFG67+JIL6TQZ5iwxu86v0laPuqCztbT+zLDRJ3VkKgOqPlgD+OCiPmNHkfvMsHtPvg7DadjprpiVwkbMKzrb11Uaya11RXQAbYLWu9K+wlop3StNhWlfXahXCg1JzsLRcy2PwCsnv9v3TjAf1w2vk7h1m6Ny5451S3toUoYStKKMpgWKYwUHK+8Cs+QanlgRF+Yq6Zl9goye2aTO2QJh5kijwlNb4IQSdya5JSY/tqfnwJzqXrC66K560SZwVZ6+6LjJpNWKNDkNNhMbH4UWFW6pnTMKRDNFRl+2NwnFyOMN25Jxew9OtCYej5Om1Rjuz1Xr+/OEliQrtIaYszUwgRVs4eZQvkMD6yOcaJ3KCcV0f89aNV4uPQPZbJ5CbiyFvTdZtcQx5kt1WagWIwRZpZkh4mlH9uufxb+kGN6Uzkd63IiZ6EBmHbktw7KkU6s7+frEfLzDQF9cr9EqYG5S5qNSn39g9KsPPyoLsJmSQ7OVJdRFxm4RTJSwIhg6wmb06wzyB5KSNzMwq3M9b7SfoZveUrDpeNz6fDPwgao7xr2pc3Cqa6mn8PJ7peZxspi1NOFic89SbfLbtF3SzhPfstp7oV/f/Etoiv1UKuegYi+IArg3hNPuJwaEzg8v/e8SSGZ4HrDgiDwXDfwVJ0kO/Q0LwE=
