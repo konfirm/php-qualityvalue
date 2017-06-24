@@ -5,7 +5,7 @@ use Konfirm\QualityValue\Collection;
 /**
  *  Test Collection class
  */
-class CollectionTest extends PHPUnit_Framework_TestCase {
+class CollectionTest extends PHPUnit\Framework\TestCase {
 	public function testCollectionFromString() {
 		$collection = Collection::fromString('a,b,c;q=0.8,d;q=0,e;q=0.90');
 

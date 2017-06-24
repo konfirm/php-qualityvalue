@@ -5,7 +5,7 @@ use Konfirm\QualityValue\Token;
 /**
  *  Test Token class
  */
-class TokenTest extends PHPUnit_Framework_TestCase {
+class TokenTest extends PHPUnit\Framework\TestCase {
 	public function testTokenDefaultQuality() {
 		$token = new Token('foo');
 

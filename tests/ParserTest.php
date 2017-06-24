@@ -6,7 +6,7 @@ use Konfirm\QualityValue\Token;
 /**
  *  Test Parser class
  */
-class ParserTest extends PHPUnit_Framework_TestCase {
+class ParserTest extends PHPUnit\Framework\TestCase {
 	public function testParsesWithoutQuality() {
 		$tokens = Parser::parse('a,b,c');
 
