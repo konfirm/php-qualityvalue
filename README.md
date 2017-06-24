@@ -14,7 +14,7 @@ $collection = Collection::fromString('foo,qux;q=0,baz;q=0.8,bar;q=1');
 $proper = (string) $collection;
 
 //  "foo,bar,baz;q=.8"
-//  - sorted on weight (and original order is the weight is the same)
+//  - sorted on weight (original order if the weight is equal)
 //  - 'bar' has its weight (q=) removed as it's 1, which is the default
 //  - 'qux' is removed as the weight 0 indicates "not acceptable") 
 
