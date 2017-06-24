@@ -1,0 +1,26 @@
+{
+    "name": "konfirm/qualityvalue",
+    "description": "Quality Values",
+    "keywords": [
+        "quality-values"
+    ],
+    "license": "DBAD",
+    "authors": [
+        {
+            "name": "Rogier Spieker",
+            "email": "rogier+php-qualityvalue@konfirm.eu"
+        }
+    ],
+    "type": "library",
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Konfirm\\QualityValue\\": "src/"
+        }
+    }
+}
