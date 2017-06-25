@@ -119,4 +119,28 @@ class CollectionTest extends PHPUnit\Framework\TestCase {
 		unset($collection);
 		unset($filtered);
 	}
+
+	public function testIntersection() {
+		$collectionA = Collection::fromString('a,b,c;q=0.9');
+		$collectionB = Collection::fromString('b,d;q=0.9,a;q=.1');
+
+		$overlap = $collectionA->intersect($collectionB);
+
+		$token = $overlap->rewind();
+		$this->assertEquals('b', $token->getValue());
+		$this->assertEquals(1, $token->getWeight());
+		$this->assertEquals('b', (string) $token);
+
+		$token = $overlap->next();
+		$this->assertEquals('a', $token->getValue());
+		$this->assertEquals(.1, $token->getWeight());
+		$this->assertEquals('a;q=.1', (string) $token);
+
+		$token = $overlap->next();
+		$this->assertEquals(null, $token);
+
+		unset($collectionA);
+		unset($collectionB);
+		unset($overlap);
+	}
 }

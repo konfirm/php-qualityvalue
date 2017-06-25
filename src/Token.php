@@ -2,8 +2,9 @@
 
 namespace Konfirm\QualityValue;
 
+use Konfirm\Collection\Comparable;
 
-class Token implements TokenInterface {
+class Token implements TokenInterface, Comparable {
 	/**
 	 * @var int
 	 */
@@ -54,6 +55,13 @@ class Token implements TokenInterface {
 	 */
 	public function getIndex(): int {
 		return $this->index;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getComparison() {
+		return $this->getValue();
 	}
 
 	/**
